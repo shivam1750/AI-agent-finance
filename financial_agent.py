@@ -35,11 +35,12 @@ finance_agent=Agent(
 
 )
 
-multi_ai_agent=Agent(
-    team=[web_search_agent,finance_agent],
-    instructions=["Always include sources","Use table to display the data"],
+multi_ai_agent = Agent(
+    team=[web_search_agent, finance_agent],
+    model=Groq(id="llama3-8b-8192"),
+    instructions=["Always provide sources for your information", "Use tables to display the financial data"],
     show_tool_calls=True,
-    markdown=True,
+    markdown=True
 )
 
 multi_ai_agent.print_response("Summarize analyst recommendation and share the latest news for NVDA",stream=True)
